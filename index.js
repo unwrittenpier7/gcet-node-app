@@ -65,7 +65,15 @@ app.get("/products", (req, res)=>{
   res.json(products);
 })
 
-app.get("/product", async (req, res) => {
-  const products = await products.find();
-  res.json(products);
+const productSchema = mongoose.Schema({
+  name: String,
+  price: Number
 });
+const Product = mongoose.model("Product", productSchema);
+
+
+app.get("/product", async (req, res) => {
+  const allProducts = await Product.find();
+  res.json(allProducts);
+});
+
