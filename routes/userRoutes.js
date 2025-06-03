@@ -5,7 +5,7 @@ const userRouter = express.Router()
 
 userRouter.post("/register", async (req, res) => {
   const { name, email, pass } = req.body;
-  const result = await userModel.insertOne({ name: name, email: email, pass: pass });
+  await userModel.create({ name, email, pass })
   return res.json(result);
 });
 
