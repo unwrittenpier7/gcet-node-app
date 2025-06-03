@@ -20,10 +20,8 @@ app.get("/", (req, res)=>{
 });
 
 app.get("/register",async(req,res)=>{
-  const result=await user.insertone({
-    name:"Peter"
-  });
-  res.json(result);
+     const result = await User.create({ name: "Peter" });
+    res.json(result);
 })
 
 app.get("/greet", (req, res)=>{
