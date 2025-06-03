@@ -14,13 +14,15 @@ const User = mongoose.model("User", userSchema);
 
 
 app.use(cors());
-
+app.use(express.json())
 app.get("/", (req, res)=>{
   return res.send("Good Morning!!");
 });
 
 app.post("/register",async(req,res)=>{
-     const result = await User.create({ name: "Peter" });
+  const {name} = req.body;
+
+     const result = await User.create({ name: name });
     res.json(result);
 })
 
