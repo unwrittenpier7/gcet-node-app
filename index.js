@@ -22,6 +22,7 @@ const Product = mongoose.model('Product', productSchema);
 
 
 
+
 app.use(cors());
 app.use(express.json())
 app.get("/", (req, res)=>{
@@ -33,6 +34,11 @@ app.post("/register",async(req,res)=>{
      const result = await User.create({ name: name, email: email, pass: pass });
     res.json(result);
 })
+
+app.get('/product', async (req, res) => {
+  const allProducts = await products.find();
+  res.json(allProducts);
+});
 
 
 app.post("/login", async (req, res) => {
@@ -74,8 +80,4 @@ app.get("/products", (req, res)=>{
 
 
 
-app.get('/product', async (req, res) => {
-  const allProducts = await db.products.find();
-  res.json(allProducts);
-});
 
