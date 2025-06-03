@@ -20,9 +20,6 @@ const productSchema = mongoose.Schema({
 });
 const Product = mongoose.model('Product', productSchema);
 
-
-
-
 app.use(cors());
 app.use(express.json())
 app.get("/", (req, res)=>{
@@ -36,10 +33,9 @@ app.post("/register",async(req,res)=>{
 })
 
 app.get('/product', async (req, res) => {
-  const allProducts = await products.find();
+  const allProducts = await Product.find();  
   res.json(allProducts);
 });
-
 
 app.post("/login", async (req, res) => {
   const { email, pass } = req.body;
@@ -52,10 +48,6 @@ app.post("/login", async (req, res) => {
     res.send({  message: "Invalid email or password" });
   }
 });
-
-
-
-
 
 app.get("/greet", (req, res)=>{
   res.send("Greetings!!");
@@ -77,7 +69,3 @@ app.get("/products", (req, res)=>{
   ];
   res.json(products);
 })
-
-
-
-
