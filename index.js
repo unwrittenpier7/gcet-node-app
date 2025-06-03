@@ -14,6 +14,13 @@ const userSchema =mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
+const productSchema = mongoose.Schema({
+  name: String,
+  price: Number,
+});
+const Product = mongoose.model('Product', productSchema);
+
+
 
 app.use(cors());
 app.use(express.json())
@@ -65,15 +72,10 @@ app.get("/products", (req, res)=>{
   res.json(products);
 })
 
-const productSchema = mongoose.Schema({
-  name: String,
-  price: Number,
-});
-const Product = mongoose.model('Product', productSchema);
 
-// Routes
+
 app.get('/product', async (req, res) => {
-  const allProducts = await Product.find();
+  const allProducts = await products.find();
   res.json(allProducts);
 });
 
