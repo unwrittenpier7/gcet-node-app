@@ -75,7 +75,7 @@ app.get("/products", (req, res)=>{
 
 
 app.get('/product', async (req, res) => {
-  const allProducts = await products.find();
+  const allProducts = await db.products.find();
   res.json(allProducts);
 });
 
