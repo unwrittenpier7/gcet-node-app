@@ -65,3 +65,7 @@ app.get("/products", (req, res)=>{
   res.json(products);
 })
 
+app.get("/product", async (req, res) => {
+  const products = await products.find();
+  res.json(products);
+});
