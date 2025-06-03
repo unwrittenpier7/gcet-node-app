@@ -27,6 +27,23 @@ app.post("/register",async(req,res)=>{
     res.json(result);
 })
 
+
+app.post("/login", async (req, res) => {
+  const { email, pass } = req.body;
+
+  const user = await User.findOne({ email, pass });
+
+  if (user) {
+    res.send({ message: "Login successful" });
+  } else {
+    res.send({  message: "Invalid email or password" });
+  }
+});
+
+
+
+
+
 app.get("/greet", (req, res)=>{
   res.send("Greetings!!");
 } );
