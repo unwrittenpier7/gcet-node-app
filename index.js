@@ -9,6 +9,8 @@ app.listen(8080,()=>{
 });
 const userSchema =mongoose.Schema({
   name: {type: String},
+  email: {type: String},
+  pass: {type: String}
 });
 const User = mongoose.model("User", userSchema);
 
@@ -20,9 +22,8 @@ app.get("/", (req, res)=>{
 });
 
 app.post("/register",async(req,res)=>{
-  const {name} = req.body;
-
-     const result = await User.create({ name: name });
+  const {name, email, pass} = req.body;
+     const result = await User.create({ name: name, email: email, pass: pass });
     res.json(result);
 })
 
