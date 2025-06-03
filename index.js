@@ -7,19 +7,6 @@ app.listen(8080,()=>{
   mongoose.connect("mongodb://localhost:27017/gcet")
   console.log("Server Started");
 });
-const userSchema =mongoose.Schema({
-  name: {type: String},
-  email: {type: String},
-  pass: {type: String}
-});
-const User = mongoose.model("User", userSchema);
-
-const productSchema = mongoose.Schema({
-  name: String,
-  price: Number,
-});
-const Product = mongoose.model('Product', productSchema);
-
 app.use(cors());
 app.use(express.json())
 app.get("/", (req, res)=>{
