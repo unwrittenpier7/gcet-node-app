@@ -19,7 +19,7 @@ app.get("/", (req, res)=>{
   return res.send("Good Morning!!");
 });
 
-app.get("/register",async(req,res)=>{
+app.post("/register",async(req,res)=>{
      const result = await User.create({ name: "Peter" });
     res.json(result);
 })
