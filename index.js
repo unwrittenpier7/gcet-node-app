@@ -17,7 +17,7 @@ app.get("/greet", (req, res)=>{
 } );
 
 app.get("/name", (req, res)=>{
-  res.send("Shreeya");
+  res.send("Peter");
 } );
 
 app.get("/weather", (req, res)=>{
