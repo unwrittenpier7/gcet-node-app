@@ -8,7 +8,7 @@ app.listen(8080,()=>{
   console.log("Server Started");
 });
 const userSchema =mongoose.Schema({
-  name: {type:string},
+  name: {type: String},
 });
 const User = mongoose.model("User", userSchema);
 
