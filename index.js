@@ -1,30 +1,30 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
-import dotenv from 'dotenv';
-import userRouter from "./routes/userRoutes.js";
-import productRouter from "./routes/productRoutes.js";
-import orderRouter from "./routes/orderRoutes.js";
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = process.env.MONGO_URI
+// Routes (example)
+// import productRoutes from "./routes/products.js";
+// app.use("/products", productRoutes);
 
-app.use("/users", userRouter);
-app.use("/products", productRouter);
-app.use("/orders",orderRouter)
+app.get("/", (req, res) => {
+  res.send("API Running");
+});
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
-    app.listen(8080, () => {
-      console.log("Server Started on port 8080");
+    app.listen(PORT, () => {
+      console.log(`✅ Server running at http://localhost:${PORT}`);
     });
   })
-  .catch((error) => {
-    console.log(error);
-  });
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
