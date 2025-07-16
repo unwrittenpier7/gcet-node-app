@@ -1,9 +1,9 @@
-import mongoose from 'mongoose'
-const userSchema = mongoose.Schema({
-  name: { type: String },
-  email: { type: String },
-  pass: { type: String },
-});
-// const user = mongoose.model("User", userSchema);
+import mongoose from "mongoose";
 
-export default mongoose.model("User", userSchema);
+const orderSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  orderValue: { type: Number, required: true },
+  date: { type: Date, default: Date.now }
+});
+
+export default mongoose.model("Order", orderSchema);
