@@ -14,7 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/orders", orderRoutes);
@@ -26,11 +25,8 @@ if (!mongoose.connection.readyState) {
     .catch((err) => console.error("❌ MongoDB connection error:", err));
 }
 
-// ✅ Root test route
 app.get("/", (req, res) => {
   res.json({ message: "Backend is running on Vercel ✅" });
 });
 
-// ❌ REMOVE app.listen()
-// ✅ Export for Vercel
-export default app;
+export default app;   // ✅ MUST be here
