@@ -11,16 +11,14 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ Mount routes
+
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/orders", orderRoutes);
 
-// ✅ MongoDB connection (connect when function is invoked)
 if (!mongoose.connection.readyState) {
   mongoose
     .connect(process.env.MONGODB_URI)
